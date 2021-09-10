@@ -1,1 +1,46 @@
-<H1>desde por pais</H1>
+<h2>Por País</h2>
+<hr>
+<div class="row">
+    <div class="col">
+        <form (ngSubmit)="buscar()" autocomplete="off">
+            <input 
+                class="form-control"
+                type="text"
+                name="termino"
+                placeholder="Buscar País..."
+                [(ngModel)]="terminoDeBusqueda"
+            >
+        </form>
+    </div>
+</div>
+<hr>
+<div class="alert alert-danger" *ngIf="hayError">
+    No se encontró nada con el termino {{terminoDeBusqueda | uppercase}}
+</div>
+<div class="row" *ngIf="!hayError">
+    <div class="col">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Bandera</th>
+                    <th>Nombre</th>
+                    <th>Población</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>Bandera</td>
+                    <td>Nombre País</td>
+                    <td>Número Población</td>
+                    <td>
+                        <a href="/pais/idPaís">Ver...</a>
+                    </td>
+                    
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

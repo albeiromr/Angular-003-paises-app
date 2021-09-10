@@ -7,13 +7,17 @@ import { PaisService } from "../../services/pais.service";
 
 @Component({
     selector: "app-por-pais",
-    templateUrl: "./por-pais.component.html"
+    templateUrl: "./por-pais.component.html",
+    styles: [`
+    .small-flag { max-width: 50px; }
+    `]
 })
 
 export class PorPaisComponent {
 
     terminoDeBusqueda: string = "";
     hayError:boolean = false;
+    paises:IPais[] = [];
 
     constructor(private paisService: PaisService){}
 
@@ -24,6 +28,9 @@ export class PorPaisComponent {
         //consumiento el ovservable que me está enviando el servicio
         //desde su función buscar país, UDEMY video número 104 SERVICIO PARA BUSCAR PAIS
         this.paisService.buscarPais(this.terminoDeBusqueda)
-            .subscribe((response:IPais[]) => {console.log(response)}, (error: HttpErrorResponse) => this.hayError = true);
+            .subscribe((response:IPais[]) => {this.paises = response}, (error: HttpErrorResponse) => {
+                this.hayError = true;
+                this.paises = [];
+            });
     }
 }

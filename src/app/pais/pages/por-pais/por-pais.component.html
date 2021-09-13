@@ -2,15 +2,7 @@
 <hr>
 <div class="row">
     <div class="col">
-        <form (ngSubmit)="buscar()" autocomplete="off">
-            <input 
-                class="form-control"
-                type="text"
-                name="termino"
-                placeholder="Buscar País..."
-                [(ngModel)]="terminoDeBusqueda"
-            >
-        </form>
+        <app-pais-input (onEnter)="buscar($event)"></app-pais-input>
     </div>
 </div>
 <hr>
@@ -21,31 +13,8 @@
 
 <div class="row" *ngIf="paises.length > 0">
     <div class="col">
-        <table class="table table-hover">
-            <thead>
-                <tr>
-                    <th>#</th>
-                    <th>Bandera</th>
-                    <th>Nombre</th>
-                    <th>Población</th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let pais of paises; let i = index">
-                    <td>{{i + 1}}</td>
-                    <td><img [src]="pais.flag" alt="bandera" class="small-flag"></td>
-                    <td>{{pais.name}}</td>
-                    <td>{{pais.population | number}}</td>
-                    <td>
-                        <!-- la siguiente líne que crea un enlace se explica en el 
-                        Curso de udemy número 107, como contruir la ruta compleja 
-                        si tiene parametros -->
-                        <a [routerLink]="['/pais', pais.alpha2Code]" href="/pais/idPaís">Ver...</a>
-                    </td>
-                    
-                </tr>
-            </tbody>
-        </table>
+        <!-- En la siguiente línea se envía un prop hacia su componente hijo, udemy video 108 -->
+        <app-paises-tabla [paises]="paises"></app-paises-tabla>
+       
     </div>
 </div>

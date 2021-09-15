@@ -25,7 +25,7 @@ export class PorPaisComponent {
 
         //consumiento el ovservable que me está enviando el servicio
         //desde su función buscar país, UDEMY video número 104 SERVICIO PARA BUSCAR PAIS
-        this.paisService.buscarPais(terminoDeBusqueda)
+        this.paisService.buscarPorPais(terminoDeBusqueda)
             .subscribe((response:IPais[]) => {this.paises = response}, (error: HttpErrorResponse) => {
                 this.hayError = true;
                 this.paises = [];

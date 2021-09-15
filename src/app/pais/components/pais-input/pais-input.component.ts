@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter, OnInit } from "@angular/core";
+import { Component, Output, EventEmitter, OnInit, Input } from "@angular/core";
 import { Subject } from "rxjs";
 import { debounceTime } from "rxjs/operators";
 
@@ -8,6 +8,8 @@ import { debounceTime } from "rxjs/operators";
 })
 
 export class PaisInputComponent implements OnInit{
+
+    @Input() placeholder:string = "";
 
     //emitiendo el value del input en un evento patra transmitir dicho valor a su
     //componente padre, udemy video 109

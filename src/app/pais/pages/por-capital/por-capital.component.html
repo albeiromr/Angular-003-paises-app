@@ -1,1 +1,24 @@
-<H1>desde por capital</H1>
+<h2>Por Capital</h2>
+<hr>
+<div class="row">
+    <div class="col">
+        <app-pais-input 
+            (onEnter)="buscar($event)" 
+            (onDebounce)="sugerencias($event)"
+            placeholder="Buscar Capital..."
+        ></app-pais-input>
+    </div>
+</div> 
+<hr>
+
+<div class="alert alert-danger" *ngIf="hayError">
+    No se encontró nada con el termino {{terminoDeBusqueda | uppercase}}
+</div>
+
+<div class="row" *ngIf="paises.length > 0">
+    <div class="col">
+        <!-- En la siguiente línea se envía un prop hacia su componente hijo, udemy video 108 -->
+        <app-paises-tabla [paises]="paises"></app-paises-tabla>
+       
+    </div>
+</div>

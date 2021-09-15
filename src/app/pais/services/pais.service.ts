@@ -11,11 +11,17 @@ export class PaisService {
 
     constructor(private http: HttpClient){}
 
-    buscarPais(terminoDeBusqued:string):Observable<IPais[]>{
+    buscarPorPais(terminoDeBusqued:string):Observable<IPais[]>{
         const url: string = `${this.endpoint}/name/${terminoDeBusqued}`; 
 
         //Enviando un observable como retorno para que sus componentes que tienen
         //este servicio  lo consumann, UDEMY video número 104 SERVICIO PARA BUSCAR PAIS
+        return this.http.get<IPais[]>( url );
+    }
+
+    buscarPorCapital(terminoDeBusqued:string):Observable<IPais[]>{
+        const url: string = `${this.endpoint}/capital/${terminoDeBusqued}`; 
+
         return this.http.get<IPais[]>( url );
     }
 

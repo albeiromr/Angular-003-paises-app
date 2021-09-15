@@ -25,4 +25,10 @@ export class PaisService {
         return this.http.get<IPais[]>( url );
     }
 
+    buscarPorCodigo(codigo:string):Observable<IPais>{
+        const url: string = `${this.endpoint}/alpha/${codigo}`; 
+
+        return this.http.get<IPais>( url );
+    }
+
 }

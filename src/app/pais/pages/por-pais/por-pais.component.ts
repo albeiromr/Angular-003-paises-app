@@ -31,4 +31,8 @@ export class PorPaisComponent {
                 this.paises = [];
             });
     }
+
+    sugerencias(valorScrito: string): void{
+        this.hayError = false;
+    }
 }
